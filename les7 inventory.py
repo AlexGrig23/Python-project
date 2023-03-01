@@ -5,9 +5,6 @@ inventory = [
     {"Name": "Hardware", "Discription": "Boolts", "Quantity": 12}
 ]
 
-for i in inventory:
-    print(i)
-
 
 def add_element():
     new_element = {}
