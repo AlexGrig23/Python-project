@@ -1,3 +1,4 @@
+if __name__ == "__main__":
 try:
     digit = float(input("Enter digit: "))
     conv_digit = int(digit)
