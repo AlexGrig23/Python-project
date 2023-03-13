@@ -19,7 +19,6 @@ def reading_file():
         print("Program complited")
 
 
-# Access denied via command line chmod 000 not_access.txt
 def access():
     f = "example.txt"
     abs_path = os.path.abspath(__file__)
@@ -38,9 +37,7 @@ def access():
         print("Program complited")
 
 
-
 def exam_int():
-    filename = "example.txt"
     ab_path = os.path.abspath(__file__)
     base_dir = os.path.dirname(ab_path)
     file_path = os.path.join(base_dir, "files", filename)
@@ -53,4 +50,3 @@ def exam_int():
     finally:
         f_read.close()
         print("Program complited")
-
