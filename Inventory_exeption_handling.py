@@ -42,8 +42,11 @@ def remove_element():
     rem_element = input()
     rem_element = rem_element.capitalize()
     out = list(filter(lambda iter_dict: rem_element in iter_dict["Name"], inventory))
-    inventory.remove(out[0])
-    return inventory
+    try:
+        inventory.remove(out[0])
+        return inventory
+    except IndexError:
+        return "No items to remove inventory is empty"
 
 
 def update_quantity():
@@ -56,25 +59,29 @@ def update_quantity():
                     new_quantity = int(input())
                     iter_dict["Quantity"] = new_quantity
                     break
-                except Exception as er:
+                except ValueError as er:
                     print(er, "You need to enter a digit")
     return inventory
 
 
 def invent_search():
-    print("Enter element name for search")
+    print("Enter search parameters key")
     el_search = input()
     el_search = el_search.capitalize()
-    for iter_dict in inventory:
-        if el_search in iter_dict["Name"] or el_search in iter_dict["Discription"]:
-            print(iter_dict)
+    print("Enter search parameters value")
+    val_search = input()
+    val_search = val_search.capitalize()
+    try:
+        for iter_dict in inventory:
+            if val_search in iter_dict[el_search]:
+                print(iter_dict)
+    except KeyError:
+        print("You entered a non-existent key")
 
 
 def tab():
-    while True:
-        for iter_dict in inventory:
-            print(iter_dict)
-        break
+    for iter_dict in inventory:
+        print(iter_dict)
 
 
 while True:
@@ -98,7 +105,7 @@ while True:
             invent_search()
         elif select_action == 6:
             break
-    except Exception as e:
+    except ValueError as e:
         print("You entered the wrong value", e)
     finally:
         print("Сlick to select an action:")
